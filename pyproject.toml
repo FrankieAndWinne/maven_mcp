@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=61", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "maven_mcp"
+version = "0.1.0"
+description = "MCP server to fetch Maven artifact versions from Nexus 3 and check vulnerabilities via OSV.dev or Sonatype IQ"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "maven_mcp" }]
+dependencies = [
+    "mcp[cli]",
+    "httpx",
+    "packaging",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "pytest-asyncio",
+]
+
+[project.scripts]
+maven-mcp = "maven_mcp.server:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]

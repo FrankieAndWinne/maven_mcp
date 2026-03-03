@@ -1,0 +1,7 @@
+mcp[cli]
+httpx
+packaging
+
+[dev]
+pytest
+pytest-asyncio
